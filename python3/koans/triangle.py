@@ -17,8 +17,24 @@
 #   about_triangle_project_2.py
 #
 def triangle(a, b, c):
-    # DELETE 'PASS' AND WRITE THIS CODE
-    pass
+    # Assigning a value to the parameters. 
+    side_a, side_b, side_c = a, b ,c 
+    # Creating list to use list functions. Yey!
+    side_list =[side_a, side_b, side_c]    
+
+    if (0 in side_list):
+        raise TriangleError
+    if ( side_a <= 0 or side_b <=0 or side_c <= 0):
+        raise TriangleError
+    if side_list.count(1) == 2 or side_list.count(2) == 2:
+    	raise(TriangleError)
+    if (a == b == c):
+        return 'equilateral'
+    elif (a == b or b == c or a == c):
+        return 'isosceles'
+    else:
+        return 'scalene'
+
 
 # Error class used in part 2.  No need to change this code.
 class TriangleError(Exception):

@@ -33,8 +33,36 @@ from runner.koan import *
 # Your goal is to write the score method.
 
 def score(dice):
-    # You need to write this method
-    pass
+    #Unpack the dice into a dictonary. do a for range to get the dice numbers and a for loop to cover the list.
+    #Dice number is key and count is the value
+    #Use if statements to evaluate the dictonary values.
+    #for item in filter(is_even, seq)
+    dice_dic = {1:0,2:0,3:0,4:0,5:0,6:0}
+    #x = {k:v for numbers in dice if numbers in dice_face v +=1 }
+    score = 0
+    for numbers in dice:
+        if numbers in range(0,7):
+            dice_dic[numbers] += 1
+    if dice_dic[1] == 5:
+        score += 50
+    if dice_dic[1] >= 3:
+        score += 1000
+        dice_dic[1] -= 3
+    if dice_dic[1] >= 1:
+        score += (dice_dic[1] * 100) 
+
+    if dice_dic[5] >= 3:
+        score += 500
+        dice_dic[5] -= 3
+    if dice_dic[5] >= 1:
+        score += (dice_dic[5] * 50)
+        dice_dic[5] = 0    
+    for points in dice_dic:
+        if dice_dic[points] == 3:
+            score += (points * 100)
+        
+    return(score)
+
 
 class AboutScoringProject(Koan):
     def test_score_of_an_empty_list_is_zero(self):
